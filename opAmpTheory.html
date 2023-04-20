@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Amplifier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Circuit Output Calculator</h1>
+    <hr>
+    <h2>Operational Amplifier</h2>
+    <div class="content">
+        <img class="first" src="img/Op-Amp.png" alt="Operational Amplifier" width="350" height="280">
+        <p class="theory ">An operational amplifier is an integrated circuit that can amplify weak electric signals.
+            An operational amplifier has two input pins and one output pin. Its basic role is to amplify and output the
+            voltage difference between the two input pins.
+            Op amps usually have three terminals: two high-impedance inputs and a low-impedance output port. The
+            inverting input is denoted with a minus (-) sign, and the non-inverting input uses a positive (+) sign.
+            Operational amplifiers work to amplify the voltage differential between the inputs, which is useful for a
+            variety of analog functions including signal chain, power, and control applications.
+
+        </p>
+        <br>
+        <h3>Working Principle</h3>
+        <p class="theory">
+            an op-amp has a differential input and single ended output. So, if we apply two signals one at the inverting
+            and another at the non-inverting terminal, an ideal op-amp will amplify the difference between the two
+            applied input signals. We call this difference between two input signals as the differential input voltage.
+            The equation below gives the output of an operational amplifier.Where, VOUT is the voltage at the output
+            terminal of the op-amp. AOL is the open-loop gain for the given op-amp and is constant (ideally). For the IC
+            741 AOL is 2 x 105.
+            V1 is the voltage at the non-inverting terminal.
+            V2 is the voltage at the inverting terminal.
+            (V1 – V2) is the differential input voltage.
+            It is clear from the above equation that the output will be non-zero if and only if the differential input
+            voltage is non-zero (V1 and V2 are not equal), and will be zero if both V1 and V2 are equal. Note that this
+            is an ideal condition, practically there are small imbalances in the op-amp. The open-loop gain of an op-amp
+            is very high. Hence, an open loop operational amplifier amplifies a small applied differential input voltage
+            to a huge value.
+            Also, it is true that if we apply small differential input voltage, the operational amplifier amplifies it
+            to a considerable value but this significant value at the output cannot go beyond the supply voltage of the
+            op-amp. Hence it does not violate the law of conservation of energy.</p>
+            <p class="theory">
+            Closed Loop Operation
+
+            The above-explained operation of the op-amp was for open-loop i.e. without a feedback. We introduce feedback
+            in the closed loop configuration. This feedback path feeds the output signal to the input. Hence, at the
+            inputs, two signals are simultaneously present. One of them is the original applied signal, and the other is
+            the feedback signal. The equation below shows the output of a closed loop op-amp.Where VOUT is the voltage
+            at the output terminal of the op-amp. ACL is the closed loop gain. The feedback circuit connected to the
+            op-amp determines the closed loop gain ACL. VD = (V1 – V2) is the differential input voltage. We say the
+            feedback as positive if the feedback path feeds the signal from the output terminal back to the
+            non-inverting (+) terminal. Positive feedback is used in oscillators. The feedback is negative if the
+            feedback path feeds the part of the signal from the output terminal back to the inverting (-) terminal. We
+            use negative feedback to the op-amps used as amplifiers. Each type of feedback, negative or positive has its
+            advantages and disadvantages.
+                <br>
+            Positive Feedback ⇒ Oscillator<br>
+            Negative Feedback ⇒ Amplifier<br>
+            Th above explanation is the most basic working principle of operational amplifiers.
+        </p>
+        <br>
+        <h3>Characteristics</h3>
+        <ul>
+            <li class="theory">
+                Very high gain.
+                </li>
+            <li class="theory">Very high input impedance.
+                </li>
+            <li class="theory">Very low output impedance. </li>
+        </ul>
+        <br>
+        <h3>Applications</h3>
+        <ul>
+            <li class="theory">Op amps are used in a wide variety of applications in electronics.</li>
+            <li class="theory">Some of the more common applications are: as a voltage follower, selective inversion circuit, a current-to-voltage converter, active rectifier, integrator, a whole wide variety of filters, and a voltage comparator.</li>
+        </ul>
+        <br>
+        <h3>Limitations</h3>
+        <ul>
+            <li class="theory">Voltage Supply Limitations.</li>
+            <li class="theory">Input Offset Voltage Limitations..</li>
+            <li class="theory">Finite Bandwidth Limitations.</li>
+            <li class="theory">Input Bias Current Limitations.</li>
+            <li class="theory">Output Offset Voltage Limits.</li>
+        </ul>
+    </div>
+    <h3>Inverting Op-Amp  </h3>
+    <a href="opAmpI.html" >
+        <input type="button" id="sim" value="Simulate">
+    </a>
+    
+    <h3>Non-Inverting Op-Amp  </h3>
+    <a href="opAmpNonI.html" >
+        <input type="button" id="sim" value="Simulate">
+    </a>
+</body>
+
+</html>

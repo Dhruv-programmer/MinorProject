@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Circuit Output Calculator</h1>
+    <hr>    
+    <h2>RLC Circuit</h2>
+    <div class="content">
+        <img class="first" src="img/rlcphoto.png" alt="WheatStone Bridge" width="300" height="280">
+        <h3>Construction</h3>
+        <p class="theory ">
+            The RLC circuit is a fundamental building block of many electronic devices. It consists of the three
+            elements:</p>
+        <ul>
+            <li>Resistance R;</li>
+            <li>Inductance L; and</li>
+            <li>Capacitance C.</li>
+        </ul>
+        <p class="theory">In its basic form, all three elements are connected in a series (as shown in figure).</p>
+        <br>
+        <h3>RLC circuit frequency</h3>
+        <p class="theory">
+            The resonant frequency of the RLC circuit is a natural frequency with which the current in the circuit
+            changes in time. This natural frequency is determined by the capacitance C,and the inductance L.
+
+            The resistance R is responsible for energy losses present in every real-world situation. If we try to push
+            through the circuit a signal with a frequency different from the natural one, such a signal is damped.
+            You can compute the resonant frequency of the RLC circuit with the following equation:</p>
+        <p class="theory">
+            <strong>f = 1 / [2π * √(L * C)]</strong>
+            <br>
+            where:
+            <br>
+            f : Resonant frequency;
+            <br>
+            L : Inductance of the inductor; and
+            <br>
+            C : Capacitance of the capacitor.
+        </p>
+        <br>
+        
+        <h3>Q-factor of the RLC circuit</h3>
+        <p class="theory">
+            The first characteristic number of the RLC circuit is the natural frequency. The second is the Q-factor.
+
+            Q-factor determines how good the circuit is (how long the oscillations will last). If the Q-factor is less
+            than 1/2, then the oscillations quickly die out.
+
+            When designing the RLC circuit, we should aim at getting the Q-factor as large as possible. The formula for
+            the Q-factor of the RLC circuit is:
+<br>
+<br>
+<strong>
+
+    Q = 1/R * √(L/C)
+</strong>
+
+           <br> where the new symbols are:
+            <br>
+            Q : Q-factor; and<br>
+            R : Resistance.
+        </p><h3>Applications</h3>
+        <p class="theory">The RLC circuits have many applications. For example, you can encounter them in:</p>
+        <ul>
+            <li class="theory">
+                Tuning circuits : known from analog radios;</li>
+            <li class="theory">Filters : basic blocks of equalizers in music equipment can also be designed with a simpler RC circuit; and
+                such as temperature, light, and strain.</li>
+            <li class="theory">Oscillators circuits : converting DC signal to an AC signal, for example, in radio transmitters. </li>
+        </ul>
+        <br>
+    </div>
+    <a href="rlcCircuit.html">
+        <input type="button" id="sim" value="Simulate">
+    </a>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Circuit Output Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Circuit Output Calculator</h1>
+  <hr>
+  <h2>Wheatstone Bridge Simulator</h2>
+  <section class="main-content">
+    <img class="circuit-img" src="img/WheatStone.jpg" alt="Circuit">
+    <form>
+      <label for="r1">R1 (in ohms):</label>
+      <input type="number" id="r1" name="r1" value="">
+      <label for="r2">R2 (in ohms):</label>
+      <input type="number" id="r2" name="r2" value="">
+      <label for="r3">R3 (in ohms):</label>
+      <input type="number" id="r3" name="r3" value="">
+      <label for="r4">R4 (in ohms):</label>
+      <input type="number" id="r4" name="r4" value="">
+      <label for="t">Temperature (in °C):</label>
+      <input type="number" id="t" name="t" value="">
+      <label for="alpha">Temperature Coefficient:</label>
+      <input type="number" id="alpha" name="alpha" value="">
+      <label for="v">Source Voltage (in Volts):</label>
+      <input type="number" id="v" name="v" value="">
+      <input id="btn" type="button" value="Calculate" onclick="checkBalance()">
+    </form>
+  </section>
+  <br>
+  <p id="result"></p>
+  <script>
+    const res = document.getElementById('result')
+    function checkBalance() {
+      var r1 = parseFloat(document.getElementById("r1").value);
+      var r2 = parseFloat(document.getElementById("r2").value);
+      var r3 = parseFloat(document.getElementById("r3").value);
+      var r4 = parseFloat(document.getElementById("r4").value);
+      var v = parseFloat(document.getElementById("v").value);
+      var alpha = parseFloat(document.getElementById("alpha").value);
+      var t = parseFloat(document.getElementById("t").value);
+      r1 *= (1 + (alpha * t));
+      r2 *= (1 + (alpha * t));
+      r3 *= (1 + (alpha * t));
+      r4 *= (1 + (alpha * t));
+      var ratio1 = r1 / r2;
+      var ratio2 = r3 / r4;
+
+      if (ratio1 === ratio2) {
+        res.innerHTML = "The Wheatstone Bridge is <strong>balanced!</strong>";
+      } else {
+        res.innerHTML = "The Wheatstone Bridge is <strong>not balanced.</strong>";
+      }
+      getValues(r1, r2, r3, r4, v);
+    }
+    function getValues(r1, r2, r3, r4, v) {
+      var v1 = v * (r1 / (r1 + r2));
+      var v2 = v * (r2 / (r1 + r2));
+      var v3 = v * (r3 / (r3 + r4));
+      var v4 = v * (r4 / (r3 + r4));
+      var i1 = v / (r1 + r2);
+      var i2 = v / (r1 + r2);
+      var i3 = v / (r3 + r4);
+      var i4 = v / (r3 + r4);
+      var vout = v * ((r1 * r4 - r2 * r3) / ((r1 + r3) * (r2 + r4)));
+      res.innerHTML += `
+      <p>Output voltage of the bridge is ${vout.toFixed(4)} V</p>
+      <p>Voltage across R1 = ${v1.toFixed(4)} V</p>
+      <p>Voltage across R2 = ${v2.toFixed(4)} V</p>
+      <p>Voltage across R3 = ${v3.toFixed(4)} V</p>
+      <p>Voltage across R4 = ${v4.toFixed(4)} V</p>
+      <p>Current flowing in R1 = ${i1.toFixed(4)} A</p>
+      <p>Current flowing in R2 = ${i2.toFixed(4)} A</p>
+      <p>Current flowing in R3 = ${i3.toFixed(4)} A</p>
+      <p>Current flowing in R4 = ${i4.toFixed(4)} A</p>
+      `
+    }
+  </script>
+</body>
+
+</html>

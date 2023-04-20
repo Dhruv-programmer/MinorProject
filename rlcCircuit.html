@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Circuit Output Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Circuit Output Calculator</h1>
+  <hr>
+  <h2>RLC Circuit Simulator</h2>
+  <section class="main-content">
+    <img class="circuit-img" src="img/rlcphoto.png" alt="Circuit">
+    <form>
+      <label for="r">R (in ohms):</label>
+      <input type="number" id="r" name="r" value="">
+      <label for="l">L (in henries):</label>
+      <input type="number" id="l" name="l" value="">
+      <label for="c">C (in farads):</label>
+      <input type="number" id="c" name="c" value="">
+      <label for="t">Temperature (in °C):</label>
+      <input type="number" id="t" name="t" value="">
+      <label for="alpha">Temperature Coefficient:</label>
+      <input type="number" id="alpha" name="alpha" value="">
+      <input id="btn" type="button" value="Calculate" onclick="checkBalance()">
+    </form>
+  </section>
+  <br>
+  <p id="result"></p>
+  <script>
+    const res = document.getElementById('result')
+    function checkBalance() {
+      var r = parseFloat(document.getElementById("r").value);
+      var l = parseFloat(document.getElementById("l").value);
+      var c = parseFloat(document.getElementById("c").value);
+      var alpha = parseFloat(document.getElementById("alpha").value);
+      var t = parseFloat(document.getElementById("t").value);
+      r *= (1 + (alpha * t));
+      getValues(r,l,c);
+    }
+    function getValues(r, l,c) {
+      var f = 1 / (2*(3.14159265359) * Math.sqrt(l*c));
+      var q = 1 / (r*Math.sqrt(l/c));
+      res.innerHTML += `
+      <p>Resonant Frequency of the RLC circuit is ${f.toFixed(4)} Hz</p>
+      <p>Q - Factor of the RLC circuit is ${q.toFixed(4)} </p>
+      `
+    }
+  </script>
+</body>
+
+</html>
