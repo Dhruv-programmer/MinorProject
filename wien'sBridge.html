@@ -1,87 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Circuit Output Calculator</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h1>Circuit Output Calculator</h1>
-  <hr>
-  <h2>Wien's Bridge Simulator</h2>
-  <section class="main-content">
-    <img class="circuit-img" src="img/WienBridge.jpeg" alt="Circuit">
-    <form>
-      <label for="r1">R1 (in ohms):</label>
-      <input type="number" id="r1" name="r1" value="">
-      <label for="r2">R2 (in ohms):</label>
-      <input type="number" id="r2" name="r2" value="">
-      <label for="r3">R3 (in ohms):</label>
-      <input type="number" id="r3" name="r3" value="">
-      <label for="r4">R4 (in ohms):</label>
-      <input type="number" id="r4" name="r4" value="">
-      <label for="c1">C1 (in farads):</label>
-      <input type="number" id="c1" name="c1" value="">
-      <label for="c2">C2 (in farads):</label>
-      <input type="number" id="c2" name="c2" value="">
-      <label for="t">Temperature (in °C):</label>
-      <input type="number" id="t" name="t" value="">
-      <label for="alpha">Temperature Coefficient:</label>
-      <input type="number" id="alpha" name="alpha" value="">
-      <input id="btn" type="button" value="Calculate" onclick="checkBalance()">
-    </form>
-  </section>
-  <br>
-  <p id="result"></p>
-  <script>
-    const res = document.getElementById('result')
-    function checkBalance() {
-      var r1 = parseFloat(document.getElementById("r1").value);
-      var r2 = parseFloat(document.getElementById("r2").value);
-      var r3 = parseFloat(document.getElementById("r3").value);
-      var r4 = parseFloat(document.getElementById("r4").value);
-      var c1 = parseFloat(document.getElementById("c1").value);
-      var c2 = parseFloat(document.getElementById("c2").value);
-      var alpha = parseFloat(document.getElementById("alpha").value);
-      var t = parseFloat(document.getElementById("t").value);
-      r1 *= (1 + (alpha * t));
-      r2 *= (1 + (alpha * t));
-      r3 *= (1 + (alpha * t));
-      r4 *= (1 + (alpha * t));
-      var ratio1 = r4 / r3;
-      var ratio2 = (c1/c2) + (r2/ r1);
-
-      if (ratio1 === ratio2) {
-        res.innerHTML = "The Bridge is <strong>balanced!</strong>";
-      } else {
-        res.innerHTML = "The Bridge is <strong>not balanced.</strong>";
-      }
-      // getValues(r1, r2, r3, r4, v);
-    }
-    function getValues(r1, r2, r3, r4, v) {
-      var v1 = v * (r1 / (r1 + r2));
-      var v2 = v * (r2 / (r1 + r2));
-      var v3 = v * (r3 / (r3 + r4));
-      var v4 = v * (r4 / (r3 + r4));
-      var i1 = v / (r1 + r2);
-      var i2 = v / (r1 + r2);
-      var i3 = v / (r3 + r4);
-      var i4 = v / (r3 + r4);
-      var vout = v * ((r1 * r4 - r2 * r3) / ((r1 + r3) * (r2 + r4)));
-      res.innerHTML += `
-      <p>Output voltage of the bridge is ${vout.toFixed(4)} V</p>
-      <p>Voltage across R1 = ${v1.toFixed(4)} V</p>
-      <p>Voltage across R2 = ${v2.toFixed(4)} V</p>
-      <p>Voltage across R3 = ${v3.toFixed(4)} V</p>
-      <p>Voltage across R4 = ${v4.toFixed(4)} V</p>
-      <p>Current flowing in R1 = ${i1.toFixed(4)} A</p>
-      <p>Current flowing in R2 = ${i2.toFixed(4)} A</p>
-      <p>Current flowing in R3 = ${i3.toFixed(4)} A</p>
-      <p>Current flowing in R4 = ${i4.toFixed(4)} A</p>
-      `
-    }
-  </script>
+    <header>
+    <h1>Circuit Output Calculator</h1>
+        <nav>
+            <div class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="WheatStoneTheory.html">Wheat-Stone</a></li>
+                    <li><a href="rlcTheory.html">RLC Circuit</a></li>
+                    <li><a href="opAmpTheory.html">Op-Amp</a></li>
+                    <li><a href="wien'sBridgeTheory.html">Wien's Bridge</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <h2>Wheatstone Bridge</h2>
+    <div class="content">
+        <img class="first" src="img/WheatStone.jpg" alt="WheatStone Bridge" width="350" height="280">
+        <p class="theory ">Wheatstone bridge, also known as the resistance bridge, calculates the unknown
+            resistance
+            by balancing two
+            legs of the bridge circuit. One leg includes the component of unknown resistance.
+            The Wheatstone Bridge Circuit comprises two known resistors, one unknown resistor and one variable
+            resistor
+            connected in the form of a bridge. This bridge is very reliable as it gives accurate measurements.</p>
+        <br>
+        <h3>Construction</h3>
+        <p class="theory">
+            A Wheatstone bridge circuit consists of four arms, of which two arms consist of known resistances while the
+            other two arms consist of an unknown resistance and a variable resistance. The circuit also consists of a
+            galvanometer and an electromotive force source. The emf source is attached between points a and b while the
+            galvanometer is connected between points c and d. The current that flows through the galvanometer depends on
+            its potential difference.
+        </p>
+        <br>
+        <h3>Working Principle</h3>
+        <p class="theory">
+            The Wheatstone bridge works on the principle of null deflection, i.e. the ratio of their resistances is
+            equal, and no current flows through the circuit. Under normal conditions, the bridge is in an unbalanced
+            condition where current flows through the galvanometer. The bridge is said to be balanced when no current
+            flows through the galvanometer. This condition can be achieved by adjusting the known resistance and
+            variable resistance.
+        </p>
+        <br>
+        <h3>Applications</h3>
+        <ul>
+            <li class="theory">The Wheatstone bridge is used for the precise measurement of low resistance.</li>
+            <li class="theory">Wheatstone bridge and an operational amplifier are used to measure physical parameters
+                such as temperature, light, and strain.</li>
+            <li class="theory">Quantities such as impedance, inductance, and capacitance can be measured using
+                variations on the Wheatstone bridge. </li>
+        </ul>
+        <br>
+        <h3>Limitations</h3>
+        <ul>
+            <li class="theory">For low resistance measurement, the resistance of the leads and contacts becomes significant and introduces an error.</li>
+            <li class="theory">For high resistance measurement, the measurement presented by the bridge is so large that the galvanometer is insensitive to imbalance.</li>
+            <li class="theory">The other drawback is the resistance change due to the current’s heating effect through the resistance. Excessive current may even cause a permanent change in the value of resistance.</li>
+        </ul>
+    </div>
+    <a href="WheatStoneBridge.html" >
+    <input type="button" id = "sim" value="Simulate">
+</a>
 </body>
 
 </html>
